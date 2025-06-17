@@ -1,0 +1,637 @@
+/* ResortAssistant.css */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --resort-primary: #4a90e2;
+  --resort-primary-light: #e3f2fd;
+  --resort-primary-dark: #1976d2;
+  --resort-secondary: #f5a623;
+  --resort-text: #2c3e50;
+  --resort-text-light: #7f8c8d;
+  --resort-text-lighter: #bdc3c7;
+  --resort-bg: #ffffff;
+  --resort-bg-light: #f8f9fa;
+  --resort-bg-dark: #f1f3f5;
+  --resort-border: #e9ecef;
+  --resort-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --resort-shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
+  --resort-shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+  --resort-radius-sm: 8px;
+  --resort-radius: 12px;
+  --resort-radius-lg: 16px;
+  --resort-radius-xl: 24px;
+  --resort-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --resort-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base container */
+.resort-assistant-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-family: var(--resort-font);
+  color: var(--resort-text);
+  line-height: 1.5;
+}
+
+.resort-assistant-container * {
+  box-sizing: border-box;
+}
+
+/* Floating Bubble Design */
+.resort-floating-bubble-container {
+  position: relative;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 12px rgba(74, 144, 226, 0.2));
+}
+
+.resort-floating-bubble {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--resort-primary), var(--resort-primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.3);
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.resort-floating-bubble::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: var(--resort-transition);
+}
+
+.resort-floating-bubble:hover::before {
+  opacity: 1;
+}
+
+.resort-bubble-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.resort-bubble-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resort-bubble-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+
+.resort-bubble-label {
+  background: white;
+  color: var(--resort-primary);
+  padding: 8px 16px;
+  border-radius: var(--resort-radius-xl);
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: var(--resort-shadow-sm);
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.resort-unread-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff5252;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+}
+
+/* Expanded state - Adjusted to match reference image */
+.resort-assistant-expanded {
+  width: 320px;
+  height: 500px;
+  max-width: 90vw;
+  min-height: 400px;
+  max-height: 80vh;
+  background: var(--resort-bg);
+  border-radius: var(--resort-radius-lg);
+  box-shadow: var(--resort-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--resort-border);
+}
+
+/* Header - Made more compact and removed emoji */
+.resort-assistant-header {
+  padding: 14px 16px;
+  background: linear-gradient(135deg, var(--resort-primary), var(--resort-primary-dark));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+.resort-assistant-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: -1;
+}
+
+.resort-assistant-branding {
+  display: flex;
+  align-items: center;
+}
+
+.resort-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.resort-title h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.resort-title p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.resort-assistant-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.resort-action-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--resort-transition);
+}
+
+.resort-action-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.resort-action-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Chat window - Adjusted spacing */
+.resort-chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--resort-bg-light);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.resort-chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+
+.resort-chat-window::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.resort-chat-window::-webkit-scrollbar-thumb {
+  background-color: var(--resort-border);
+  border-radius: 20px;
+}
+
+.resort-chat-date-divider {
+  text-align: center;
+  margin: 0 0 12px;
+  position: relative;
+}
+
+.resort-chat-date-divider span {
+  background: var(--resort-bg-light);
+  padding: 0 10px;
+  font-size: 11px;
+  color: var(--resort-text-lighter);
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.resort-chat-date-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--resort-border);
+  z-index: 0;
+}
+
+/* Chat messages - Made more compact */
+.resort-chat-message {
+  display: flex;
+  margin-bottom: 12px;
+  max-width: 85%;
+  position: relative;
+}
+
+.resort-chat-message.bot {
+  align-self: flex-start;
+}
+
+.resort-chat-message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.resort-message-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--resort-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+  box-shadow: var(--resort-shadow-sm);
+}
+
+.resort-message-avatar svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resort-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.resort-message-bubble {
+  padding: 10px 14px;
+  border-radius: var(--resort-radius);
+  position: relative;
+  box-shadow: var(--resort-shadow-sm);
+  max-width: 100%;
+}
+
+.resort-chat-message.bot .resort-message-bubble {
+  background: white;
+  border-top-left-radius: 4px;
+}
+
+.resort-chat-message.user .resort-message-bubble {
+  background: var(--resort-primary);
+  color: white;
+  border-top-right-radius: 4px;
+}
+
+.resort-message-text {
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.resort-message-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-size: 9px;
+  color: var(--resort-text-lighter);
+  padding: 0 4px;
+}
+
+.resort-chat-message.user .resort-message-meta {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.resort-message-status {
+  display: flex;
+  align-items: center;
+}
+
+.resort-message-status svg {
+  width: 10px;
+  height: 10px;
+}
+
+/* Typing indicator */
+.resort-typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  height: 20px;
+}
+
+.resort-typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--resort-primary);
+  display: inline-block;
+  animation: resortTyping 1.4s infinite both;
+}
+
+.resort-typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.resort-typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes resortTyping {
+  0% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+}
+
+/* Suggestions - Made more compact */
+.resort-suggestions {
+  margin: 6px 0 12px;
+}
+
+.resort-suggestions p {
+  font-size: 12px;
+  color: var(--resort-text-light);
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+.resort-suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.resort-suggestion-chip {
+  background: white;
+  border: 1px solid var(--resort-border);
+  border-radius: var(--resort-radius-xl);
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--resort-primary);
+  cursor: pointer;
+  transition: var(--resort-transition);
+  font-family: var(--resort-font);
+  font-weight: 500;
+  box-shadow: var(--resort-shadow-sm);
+}
+
+.resort-suggestion-chip:hover {
+  background: var(--resort-primary-light);
+  border-color: var(--resort-primary);
+}
+
+/* Input area - Made more compact */
+.resort-input-container {
+  padding: 12px;
+  background: var(--resort-bg);
+  border-top: 1px solid var(--resort-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resort-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  background: var(--resort-bg-light);
+  border-radius: var(--resort-radius-xl);
+  padding: 3px 3px 3px 14px;
+  border: 1px solid var(--resort-border);
+  transition: var(--resort-transition);
+}
+
+.resort-input-wrapper:focus-within {
+  border-color: var(--resort-primary);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.resort-chat-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  padding: 8px 0;
+  outline: none;
+  font-family: var(--resort-font);
+  color: var(--resort-text);
+}
+
+.resort-chat-input::placeholder {
+  color: var(--resort-text-lighter);
+}
+
+.resort-send-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--resort-primary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--resort-transition);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.resort-send-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resort-send-button:hover:not(.disabled) {
+  background: var(--resort-primary-dark);
+}
+
+.resort-send-button.disabled {
+  background: var(--resort-text-lighter);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Footer - Made more compact */
+.resort-assistant-footer {
+  text-align: center;
+  font-size: 10px;
+  color: var(--resort-text-lighter);
+  margin-top: 6px;
+}
+
+.resort-assistant-footer p {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .resort-assistant-container {
+    bottom: 25px;
+    right: 25px;
+  }
+
+  .resort-floating-bubble {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resort-assistant-container {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .resort-assistant-expanded {
+    width: 85vw;
+    height: 70vh;
+    min-height: 450px;
+  }
+
+  .resort-floating-bubble {
+    width: 52px;
+    height: 52px;
+  }
+
+  .resort-bubble-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resort-assistant-container {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .resort-assistant-expanded {
+    width: 92vw;
+    height: 80vh;
+    min-height: 400px;
+    border-radius: var(--resort-radius);
+  }
+
+  .resort-floating-bubble {
+    width: 48px;
+    height: 48px;
+  }
+
+  .resort-bubble-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .resort-bubble-label {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .resort-chat-window {
+    padding: 16px;
+  }
+
+  .resort-input-container {
+    padding: 12px;
+  }
+}
+
+/* Animations */
+@keyframes resortPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+  }
+}
+
+/* Shimmer effect for loading states */
+.resort-shimmer {
+  background: linear-gradient(90deg, var(--resort-bg-light) 0%, var(--resort-bg) 50%, var(--resort-bg-light) 100%);
+  background-size: 200% 100%;
+  animation: resortShimmer 1.5s infinite;
+}
+
+@keyframes resortShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
