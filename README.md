@@ -67,13 +67,13 @@ Traditionally, resort bookings were handled manually through calls and registers
 ```bash
 git clone https://github.com/vedhavithyaseenivasan/ResortEase.git
 cd ResortEase
-
+```
 
 - Backend Setup
 ```bash
 cd server
 npm install
-
+```
 
 - Create a .env file with the following
 ```bash
@@ -81,19 +81,19 @@ MONGO_URI=<your_mongo_connection_string>
 JWT_SECRET=<your_jwt_secret>
 EMAIL_USER=<your_email>
 EMAIL_PASS=<your_app_password>
-
+```
 
 - Start the server
 ```bash
 node server.js
-
+```
 
 - Frontend Setup
 ```bash
 cd ../client
 npm install
 npm start
-
+```
 
 ---
 
