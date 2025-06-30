@@ -100,7 +100,7 @@ npm start
 ## 🌐 Live Demo
 
 You can access the live version of ResortEase here:  
-👉 [Visit ResortEase](https://lnkd.in/gKenKhvu)
+👉 [Visit ResortEase](https://resort-zeta.vercel.app/)
 
 ---
 
